@@ -4,13 +4,13 @@ Modular Cornedeon split keyboard.
 
 Keyboard Maintainer: [alko](https://github.com/alko-kbd/cornedeon_2mod) [alko-kbd@alk0.ru](mailto:alko-kbd@alk0.ru)
 
-Web Site: [cornedeon.ru](https://cornedeon.ru)
+Web Site: [cornedeon.ru](https://cornedeon.ru){:target="_blank"}
 
 **Hardware Supported**
 
 RP2040, Handwired, Trackpads, Trackpoints, Joystick.
 
-![Cornedeon](img/1_over_s.jpg){:target="_blank"}
+![Cornedeon](img/1_over_s.jpg)
 
 **Revision 2mod**
 
