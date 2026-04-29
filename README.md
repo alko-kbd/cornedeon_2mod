@@ -4,7 +4,7 @@ Modular Cornedeon split keyboard.
 
 Keyboard Maintainer: [alko](https://github.com/alko-kbd/cornedeon_2mod) [alko-kbd@alk0.ru](mailto:alko-kbd@alk0.ru)
 
-Web Site: [cornedeon.ru](https://cornedeon.ru){:target="_blank"}
+Web Site: [cornedeon.ru](https://cornedeon.ru)
 
 **Hardware Supported**
 
