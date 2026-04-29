@@ -10,7 +10,7 @@ Web Site: [cornedeon.ru](https://cornedeon.ru)
 
 RP2040, Handwired, Trackpads, Trackpoints, Joystick.
 
-![Cornedeon](img/1_over_s.jpg)
+![Cornedeon](img/1_over_s.jpg){:target="_blank"}
 
 **Revision 2mod**
 
