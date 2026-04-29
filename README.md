@@ -17,10 +17,10 @@ Support for custom modules on same case, as trackpoint, trackpad, encoders, joys
 
 **Build**
 
-git clone --recurse-submodules https://github.com/vial-kb/vial-qmk.git
+#>git clone --recurse-submodules https://github.com/vial-kb/vial-qmk.git
 
 Prepare [build environment](https://get.vial.today/docs/porting-to-vial.html).
 
-Copy folder cornedeon_2mod_joy_tpad to vial-qmk/keyboards/alko.
+Clone this repository to vial-qmk/keyboards/alko.
 
-qmk compile -kb alko/cornedeon_2mod -km vial
+#>qmk compile -kb alko/cornedeon_2mod -km vial
