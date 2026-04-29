@@ -1,0 +1,22 @@
+LTO_ENABLE         = no
+MEDIA_KEY_ENABLE   = yes
+CONSUMER_ENABLE    = yes
+QMK_SETTINGS       = yes
+#ENCODER_MAP_ENABLE = yes
+
+# Enabled in keyboard.json
+#PS2_ENABLE = yes
+#PS2_MOUSE_ENABLE = yes
+#PS2_DRIVER = vendor
+
+POINTING_DEVICE_ENABLE = yes
+#POINTING_DEVICE_DRIVER = azoteq_iqs5xx
+POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
+
+#JOYSTICK_ENABLE = yes
+#JOYSTICK_DRIVER = analog
+ANALOG_DRIVER_REQUIRED = yes
+ANALOG_ENABLE = yes
+
+#CONSOLE_ENABLE = yes
+#DEBUG_ENABLE = yes

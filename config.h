@@ -1,0 +1,56 @@
+// Copyright 2024 QMK
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+#pragma once
+
+#define DEBOUNCE 5
+
+#define SPLIT_TRANSACTION_IDS_KB SYNC_JOYSTICK_TR_ID
+// Shared memory
+//#define SPLIT_TRANSPORT_MIRROR --> keyboard.json split.transport.sync.matrix_state
+//#define SPLIT_USER_STATE_SIZE sizeof(joystick_state)
+
+//#define SPLIT_ACTIVITY_ENABLE
+//#define POINTING_DEVICE_COMBINED
+#define SPLIT_POINTING_ENABLE
+#define POINTING_DEVICE_RIGHT
+#define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
+
+//#define AZOTEQ_IQS5XX_WIDTH_MM 40
+//#define AZOTEQ_IQS5XX_HEIGHT_MM 43
+#define CIRQUE_PINNACLE_DIAMETER_MM 35
+#define CIRQUE_PINNACLE_TAP_ENABLE
+#define CIRQUE_PINNACLE_CURVED_OVERLAY
+#define CIRQUE_PINNACLE_SECONDARY_TAP_ENABLE
+
+#define I2C_DRIVER I2CD1
+#define I2C1_SDA_PIN GP10
+#define I2C1_SCL_PIN GP11
+
+// Split driver = vendor
+#define SERIAL_PIO_USE_PIO0
+#define SERIAL_USART_FULL_DUPLEX
+#define SERIAL_USART_RX_PIN GP1
+#define SERIAL_USART_TX_PIN GP0
+
+// RP2040- and hardware-specific config
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // Activates the double-tap behavior
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 500U
+#define PICO_XOSC_STARTUP_DELAY_MULTIPLIER 64
+
+#define CUSTOM_JOYSTICK_ENABLE
+#define JOYSTICK_LEFT
+
+// Min 0, max 6: X, Y, Z, Rx, Ry, Rz
+#ifdef CUSTOM_JOYSTICK_ENABLE
+  #define JOYSTICK_AXIS_COUNT 2
+  #define JOYSTICK_AXIS_X_PIN GP29
+  #define JOYSTICK_AXIS_Y_PIN GP28
+  //#define JOYSTICK_INVERT_X_AXIS
+  #define JOYSTICK_INVERT_Y_AXIS
+  // Min 8, max 16
+  #define JOYSTICK_AXIS_RESOLUTION 10
+  // Min 0, max 32
+  #define JOYSTICK_BUTTON_COUNT 1
+  #define JOYSTICK_BUTTON_PIN GP11
+#endif
