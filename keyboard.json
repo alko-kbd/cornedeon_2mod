@@ -17,7 +17,7 @@
         "nkro": true,
         "oled": false,
         "rgblight": false,
-        "rgb_matrix": false,
+        "rgb_matrix": true,
         "mousekey": true,
         "encoder": false,
     },
@@ -137,9 +137,9 @@
         "pin": "GP3"
     },
     "rgblight": {
-        "led_count": 60,
+        "led_count": 2,
         "split": true,
-        "split_count": [30, 30],
+        "split_count": [1, 1],
         "max_brightness": 120,
         "animations": {
             "alternating": true,
@@ -155,6 +155,13 @@
         }
     },
     "rgb_matrix": {
+        "driver": "ws2812",
+        "led_count": 2,
+        "split_count": [1, 1],
+        "layout": [
+            {"x": 150, "y": 50, "flags": 2},
+            {"x": 200, "y": 50, "flags": 2}
+        ],
         "animations": {
             "alphas_mods": true,
             "gradient_up_down": true,

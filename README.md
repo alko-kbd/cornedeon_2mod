@@ -8,11 +8,11 @@ Web Site: [cornedeon.ru](https://cornedeon.ru)
 
 Hardware Supported: Handwired, RP2040, Trackpads, Trackpoints, Joystick.
 
-![Cornedeon](img/1_over_s.jpg)
+![Cornedeon 2MOD](img/collage_2.jpg)
 
 **Revision 2mod**
 
-Support for custom modules on same case, as trackpoint, trackpad, encoders, joystick etc.
+Support for custom modules on same case, as trackpoint, trackpad, trackball, encoders, joystick etc.
 
 
 **Build**

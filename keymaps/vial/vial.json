@@ -1,5 +1,5 @@
 {
-  "lighting": "none",
+  "lighting": "vialrgb",
   "matrix": { "rows": 10, "cols": 6 },
   "layouts": {
       "keymap": [
