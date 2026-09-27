@@ -196,22 +196,25 @@ void init_trackball(void) {
     uprintf("is_trackball_side: %d\n", is_trackball_side);
 }
 
-#define SCROLL_DIVISOR 50
 static int32_t scroll_accum_x = 0;
 static int32_t scroll_accum_y = 0;
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+#ifdef SCROLL_ENABLE
     uint8_t layer = get_highest_layer(layer_state);    
-    if (layer != 0) {
+    if (layer == SCROLL_LAYER) {
         if (mouse_report.x != 0 || mouse_report.y != 0) {            
-            scroll_accum_x += mouse_report.x;
-            scroll_accum_y += -mouse_report.y; // invert Y
             // convert motion to scroll
-            //mouse_report.h = scroll_accum_x / SCROLL_DIVISOR;
-            mouse_report.v = scroll_accum_y / SCROLL_DIVISOR;
-            // Store scroll reminder
+#ifdef SCROLL_X
+            scroll_accum_x += mouse_report.x;
+            mouse_report.h = scroll_accum_x / SCROLL_DIVISOR;
             scroll_accum_x %= SCROLL_DIVISOR;
+#endif
+#ifdef SCROLL_Y
+            scroll_accum_y += -mouse_report.y; // invert Y
+            mouse_report.v = scroll_accum_y / SCROLL_DIVISOR;
             scroll_accum_y %= SCROLL_DIVISOR;
+#endif
         }
         mouse_report.x = 0;
         mouse_report.y = 0;
@@ -219,6 +222,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
         scroll_accum_x = 0;
         scroll_accum_y = 0;
     }
+#endif // SCROLL_ENABLE
     return mouse_report;
 }
 

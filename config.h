@@ -55,6 +55,14 @@
 #define POINTING_DEVICE_ROTATION_90
 #define POINTING_DEVICE_INVERT_X
 //#define POINTING_DEVICE_INVERT_Y
+
+/* Scroll */
+#define SCROLL_ENABLE
+#define SCROLL_LAYER 1
+#define SCROLL_DIVISOR 50
+//#define SCROLL_X
+#define SCROLL_Y
+
 #endif // TRACKBALL_ENABLE
 
 // Split driver = vendor
