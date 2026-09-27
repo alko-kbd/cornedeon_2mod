@@ -18,7 +18,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------|
       KC_LCTL,KC_LEFT,KC_RIGHT, KC_LALT, TL_LOWR,  KC_SPC,        KC_SPC, TL_UPPR, KC_RGUI,   KC_UP, KC_DOWN, KC_RCTL,
   //| Joystick keys---------------------------------------|    |-----------------------------------------------------|
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_SPC,   KC_NO,         KC_NO,   KC_NO,   KC_NO,  KC_NO,   KC_NO,   KC_NO
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_SPC,   KC_NO,       MS_BTN1,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO
   //`------------------------------------------------------'   `-----------------------------------------------------'
   ),
   [1] = LAYOUT(
@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, KC_HOME,  KC_END, KC_LALT, KC_TRNS,  KC_ENT,       KC_ENT, KC_TRNS, KC_RGUI, KC_PGUP, KC_PGDN, KC_RCTL,
   //| Joystick keys---------------------------------------|    |-----------------------------------------------------|
-      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_SPC,   KC_NO,         KC_NO,   KC_NO,   KC_NO,  KC_NO,   KC_NO,   KC_NO
+      KC_LEFT,   KC_UP, KC_DOWN, KC_RGHT, KC_SPC,   KC_NO,        MS_BTN2,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO
   //`------------------------------------------------------'   `-----------------------------------------------------'
   ),
   [2] = LAYOUT(
