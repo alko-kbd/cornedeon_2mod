@@ -182,6 +182,49 @@ void process_joystick_state(void) {
 
 #endif // CUSTOM_JOYSTICK_ENABLE
 
+#ifdef TRACKBALL_ENABLE
+
+static bool is_trackball_side = false;
+
+void init_trackball(void) {
+    is_trackball_side = 
+    #ifdef TRACKBALL_RIGHT
+        !is_keyboard_left();
+    #else
+        is_keyboard_left();
+    #endif
+    uprintf("is_trackball_side: %d\n", is_trackball_side);
+}
+
+#define SCROLL_DIVISOR 50
+static int32_t scroll_accum_x = 0;
+static int32_t scroll_accum_y = 0;
+
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    uint8_t layer = get_highest_layer(layer_state);    
+    if (layer != 0) {
+        if (mouse_report.x != 0 || mouse_report.y != 0) {            
+            scroll_accum_x += mouse_report.x;
+            scroll_accum_y += -mouse_report.y; // invert Y
+            // convert motion to scroll
+            //mouse_report.h = scroll_accum_x / SCROLL_DIVISOR;
+            mouse_report.v = scroll_accum_y / SCROLL_DIVISOR;
+            // Store scroll reminder
+            scroll_accum_x %= SCROLL_DIVISOR;
+            scroll_accum_y %= SCROLL_DIVISOR;
+        }
+        mouse_report.x = 0;
+        mouse_report.y = 0;
+    } else {
+        scroll_accum_x = 0;
+        scroll_accum_y = 0;
+    }
+    return mouse_report;
+}
+
+#endif // TRACKBALL_ENABLE
+
+
 static uint32_t last_sync = 0;
 
 void sync_slave_handler(uint8_t in_size, const void* in_data, uint8_t out_size, void* out_data) {
@@ -196,6 +239,9 @@ void keyboard_post_init_kb(void) {
 #ifdef CUSTOM_JOYSTICK_ENABLE
     init_joystick();
 #endif // CUSTOM_JOYSTICK_ENABLE
+#ifdef TRACKBALL_ENABLE
+    init_trackball();
+#endif
     keyboard_post_init_user();
 }
 

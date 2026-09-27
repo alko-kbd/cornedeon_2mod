@@ -39,7 +39,7 @@
             }
         },
         "bootmagic": {
-            "matrix": [4, 1]
+            "matrix": [5, 1]
         },
         "handedness": {
             "pin": "GP2"
