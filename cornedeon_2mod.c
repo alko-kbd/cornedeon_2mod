@@ -196,7 +196,13 @@ void init_trackball(void) {
     uprintf("is_trackball_side: %d\n", is_trackball_side);
 }
 
-static int32_t scroll_accum_x = 0;
+void pointing_device_init_user(void) {
+    if (is_trackball_side) {
+        pmw33xx_set_cpi(0, PMW33XX_CPI);
+        uprintf("trackball init CPI:: %d\n", PMW33XX_CPI);
+    }
+}
+
 static int32_t scroll_accum_y = 0;
 
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
@@ -204,22 +210,19 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     uint8_t layer = get_highest_layer(layer_state);    
     if (layer == SCROLL_LAYER) {
         if (mouse_report.x != 0 || mouse_report.y != 0) {            
-            // convert motion to scroll
-#ifdef SCROLL_X
-            scroll_accum_x += mouse_report.x;
-            mouse_report.h = scroll_accum_x / SCROLL_DIVISOR;
-            scroll_accum_x %= SCROLL_DIVISOR;
-#endif
-#ifdef SCROLL_Y
-            scroll_accum_y += -mouse_report.y; // invert Y
-            mouse_report.v = scroll_accum_y / SCROLL_DIVISOR;
-            scroll_accum_y %= SCROLL_DIVISOR;
-#endif
+            // Объединяем X и Y в единый вертикальный вектор.
+            // Движение «на себя» (y > 0) и «влево» (x < 0) прокручивает вниз.
+            // Движение «от себя» (y < 0) и «вправо» (x > 0) прокручивает вверх.
+            int32_t combined_motion = -mouse_report.y + mouse_report.x;    
+            scroll_accum_y += combined_motion;
+            int32_t scroll_v = scroll_accum_y / SCROLL_DIVISOR;
+            if (scroll_v != 0) {
+                mouse_report.v = scroll_v;
+                scroll_accum_y -= scroll_v * SCROLL_DIVISOR;
+            }        
         }
-        mouse_report.x = 0;
         mouse_report.y = 0;
     } else {
-        scroll_accum_x = 0;
         scroll_accum_y = 0;
     }
 #endif // SCROLL_ENABLE
